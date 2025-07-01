@@ -129,7 +129,7 @@ def home_tab():
                                   style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"})
                             ], style={"marginBottom": "8px"}),
                     html.Li([
-                        html.Strong("Recommendations: ",
+                        html.Strong("Insights & Recommendations: ",
                                     style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}),
                         html.Span("Discover actionable insights and data-driven suggestions based on the analysis.",
                                   style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"})
@@ -253,10 +253,14 @@ def home_tab():
 def eda_tab():
     return html.Div([
         html.P([
-            "In this section, we will explore the data and aim to understand it by answering three key questions: ",
-            html.Strong("When"), ", ", html.Strong("Where"), ", and ", html.Strong("Why"), " did the airplane crashes occur?"
-        ], style={"color": "#FAFAFA", "fontSize": "20px"}),
-        html.H3("📊 Dataset Quick Summary:", style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "40px"}),
+            "Airplane crashes have long captured public attention due to their tragic consequences and complex causes. This dashboard takes you on an "
+            "interactive journey to explore aviation accidents through three essential questions:", html.Strong(" When "), "did they occur? ", html.Strong("Where "), " did they happen? And ", html.Strong("Why?"),
+            " did they take place? By answering these, we uncover patterns that can lead to deeper insights—and better safety in the skies.",
+        ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px"}),
+
+        html.P([
+            "First things first—let's look at some quick stats."], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px"}),
+        html.H3("📊 Dataset Quick Summary:", style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}),
 
         html.Div([
             html.Div([
@@ -293,6 +297,14 @@ def eda_tab():
         }),
 
         html.Div([
+            html.Div(
+                html.P("Are there specific periods when airplane crashes were more frequent? This section breaks down the data by year, month, and time of day to uncover temporal patterns and trends. "
+                       "Explore how aviation safety has evolved over the decades and which times pose greater risks."),
+                style={"height": "100px",
+                       "fontSize": "20px",
+                       "marginTop": "-30px",
+                       "marginBottom": "-15px",
+                       "textIndent": "20px"}),
             html.H3("📅 Time:", style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "10px"}),
             html.P("When did crashes happen?", style=q_style),
             html.H5("Crashes Over Time:", style={"color": "#FFFFFF", "fontSize": "24px", "fontWeight": "600", "marginTop": "20px"}),
@@ -303,7 +315,7 @@ def eda_tab():
                     {'label': 'Number of Fatalities', 'value': 'Fatalities'},
                 ],
                 value=['Accidents'],   # default
-                labelStyle={'display': 'inline-block', 'marginRight': '20px'},
+                labelStyle={'display': 'inline-block', 'marginRight': '20px',"fontSize": "19px"},
                 style={'color': 'white', 'marginBottom': '5px'}
             ),
             dcc.Graph(id='accident-time-series', style={"height": "500px"}),
@@ -316,8 +328,8 @@ def eda_tab():
                         {"label": "Military", "value": "Military"}
                     ],
                     value=["Civilian", "Military"],
-                    labelStyle={"display": "inline-block", "margin-right": "15px"},
-                    inputStyle={"margin-right": "5px"},
+                    labelStyle={"display": "inline-block", "marginRight": "15px","fontSize": "19px"},
+                    inputStyle={"marginRight": "5px"},
                     style={"color": "white", "marginBottom": "20px"}
                 ),
                 html.Div([
@@ -326,19 +338,26 @@ def eda_tab():
                     ], style={"width": "38%", "padding": "10px"}),
                     html.Div([
                         dcc.Graph(id="monthly-crash-bar-chart")
-                    ], style={"width": "58%", "padding": "10px"}),
+                    ], style={"width": "58%", "padding": "10px"})
                 ], style={"display": "flex", "justifyContent": "space-between", "flexWrap": "wrap"})
             ]),
 
             html.Div([
-                html.H5("Search Accidents by Date:",
-                        style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "40px"}),
+                html.H5(
+                    "Search Accidents by Date:",
+                    style={
+                        "color": "#FFFFFF",
+                        "fontSize": "26px",
+                        "fontWeight": "600",
+                        "marginTop": "40px"
+                    }
+                ),
                 dcc.DatePickerSingle(
                     id='date-picker',
                     min_date_allowed=airplane_data_clean['Date'].min(),
                     max_date_allowed=airplane_data_clean['Date'].max(),
                     initial_visible_month=airplane_data_clean['Date'].max(),
-                    date=None,
+                    date="06/08/2009",
                     style={"marginBottom": "20px"}
                 ),
                 html.Div(id='date-search-result')
@@ -348,7 +367,7 @@ def eda_tab():
                 "borderRadius": "10px",
                 "marginTop": "-10px",
                 "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
-            }),
+            })
         ], style={
             "backgroundColor": "#0E1117",
             "padding": "50px",
@@ -357,64 +376,79 @@ def eda_tab():
             "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
         }),
 
-        html.Div(style={"height": "50px"}),
-
-         
         html.Div([
-            html.H3("🌍 Location: :", style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "40px"}),
+            html.Div(
+                html.P("We've seen that accidents peaked during specific time periods—but where exactly did they occur? Are certain countries more prone to airplane crashes than others?"
+                       " This section maps the global distribution of aviation incidents to uncover regional patterns and identify high-risk areas."),
+                style={"height": "100px",
+                       "fontSize": "21px",
+                       "marginTop": "-30px",
+                       "marginBottom": "-10px",
+                       "textIndent": "20px"}),
+            html.H3(
+                "🌍 Location:",
+                style={
+                    "color": "#FFFFFF",
+                    "fontSize": "26px",
+                    "fontWeight": "600",
+                    "marginTop": "40px"
+                }
+            ),
             html.P("Where did they happen?", style=q_style),
-            html.H5("Geographical Distribution of Crashes:", style={"color": "#FFFFFF", "fontSize": "24px", "fontWeight": "600", "marginTop": "20px"}),
+            html.H5(
+                "Geographical Distribution of Crashes:",
+                style={
+                    "color": "#FFFFFF",
+                    "fontSize": "24px",
+                    "fontWeight": "600",
+                    "marginTop": "20px"
+                }
+            ),
             html.Div([
-                dcc.Graph(
-                    id='world-map',)
-                 ], style={"height": "600px", "marginTop": "20px"}),
+                dcc.Graph(id='world-map')
+            ], style={"height": "600px", "marginTop": "20px"}),
 
             html.Div([
-                
                 html.Div([
                     html.Div([
-                       html.H5("Search Accidents by Country:",
-                        style={
-                            "color": "#FFFFFF",
-                            "fontSize": "26px",
-                            "fontWeight": "600",
-                            "marginTop": "40px"
-                        }),
-
-                dcc.Input(
-                    id='country-input',
-                    type='text',
-                    placeholder='Enter a country name...',
-                    style={
-                        "width": "100%",
-                        "padding": "12px",
-                        "borderRadius": "5px",
-                        "border": "1px solid #444",
-                        "marginBottom": "20px",
-                        "fontSize": "16px",
-                        "backgroundColor": "#1E222C",
-                        "color": "#FFFFFF"
-                    }
-                ),
-                html.Div(id='country-search-result')
-                    ], style={ "padding": "30px","borderRadius": "10px",
-                                "marginTop": "30px", "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"}),
-                html.Div([
+                        html.H5(
+                            "Search Accidents by Country:",
+                            style={
+                                "color": "#FFFFFF",
+                                "fontSize": "26px",
+                                "fontWeight": "600",
+                                "marginTop": "40px"
+                            }
+                        ),
+                        dcc.Input(
+                            id='country-input',
+                            type='text',
+                            placeholder='Enter a country name...',
+                            style={
+                                "width": "100%",
+                                "padding": "12px",
+                                "borderRadius": "5px",
+                                "marginBottom": "20px",
+                                "fontSize": "16px",
+                                "backgroundColor": "#1E222C",
+                                "color": "#FFFFFF",
+                                "border": "0px solid #444",
+                            }
+                        ),
+                        html.Div(id='country-search-result')
+                    ], style={
+                        "padding": "40px",
+                        "paddingright": "40px",
+                        "borderRadius": "10px",
+                        "marginTop": "30px",
+                        "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
+                    }),
+                    html.Div([
                         dcc.Graph(id="top-countries-bar-chart")
-                    ], style={"width": "58%", "padding": "10px"}),
-                    ], style={"display": "flex", "justifyContent": "space-between", "flexWrap": "wrap"})
-                ]),], style={ "backgroundColor": "#0E1117",
-            "padding": "50px",
-            "marginTop": "-25px",
-            "borderRadius": "10px",
-            "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
-                              }),
+                    ], style={"width": "58%", "padding": "10px"})
+                ], style={"display": "flex", "justifyContent": "space-between", "flexWrap": "wrap"})
+            ]),
 
-        html.Div(style={"height": "50px"}),
-
-        html.Div([
-            html.H3("💥Causes :", style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "40px"}),
-            html.P("Why did they happen?", style=q_style)
         ], style={
             "backgroundColor": "#0E1117",
             "padding": "50px",
@@ -422,6 +456,98 @@ def eda_tab():
             "borderRadius": "10px",
             "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
         }),
+        html.Div([
+            html.Div(
+                html.P("Though the United States tops the list in crash count, this could be a reflection of its flight volume—or something more. What's really driving these numbers?"),
+                style={"height": "100px", "fontSize": "21px",
+                       "marginTop": "-10px", "marginBottom": "-50px",
+                       "textIndent": "20px"}),
+            html.H3(
+                "💥 Causes:",
+                style={
+                    "color": "#FFFFFF",
+                    "fontSize": "26px",
+                    "fontWeight": "600",
+                    "marginTop": "40px"
+                }
+            ),
+            html.P("Why did they happen?", style=q_style),
+
+            html.Div([
+                html.H3(
+                    "Common Words in Accident Summaries:",
+                    style={"color": "white", "marginBottom": "30px", "fontWeight": "600", }
+                ),
+                html.Img(
+                    src="/assets/wordcloud_summary.png",
+                    style={"width": "100%", "borderRadius": "20px", }
+                )
+            ], style={"marginBottom": "30px"}),
+
+            html.Div([
+                html.H5(
+                    "Causes of Airplane Crashes:",
+                    style={
+                        "color": "#FFFFFF",
+                        "fontSize": "26px",
+                        "fontWeight": "600",
+                        "marginBottom": "20px"
+                    }
+                ),
+                dcc.Graph(id="cause-pie-chart")
+            ], style={
+                "backgroundColor": "#0E1117"
+            }),
+
+            html.Div([
+                html.H3(
+                    "🔍 Explore Crashes by Cause:",
+                    style={
+                        "color": "#FFFFFF",
+                        "fontSize": "24px",
+                        "marginBottom": "20px"
+                    }
+                ),
+                dcc.Dropdown(
+                    id="cause-dropdown",
+                    options=[
+                        {"label": cause, "value": cause}
+                        for cause in sorted(airplane_data_clean['Causes'].dropna().unique())
+                    ],
+                    value=None,
+                    placeholder="Select a cause...",
+                    style={
+                        "backgroundColor": "#1e222c",
+                        "color": "#0A0A0A",
+                        "borderRadius": "2px",
+                        "padding": "3px",
+                        "fontSize": "18px",
+                        "border": "0px solid #444",
+                        "borderRadius": "5px",
+                    }
+                ),
+
+                html.Div(id="cause-stats", style={"color": "#FFFFFF", "marginTop": "20px", "fontSize": "18px"}),
+
+            ], style={
+                "backgroundColor": "#0E1117",
+                "padding": "50px",
+                "marginTop": "-25px",
+                "borderRadius": "10px",
+                "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
+            }),
+            html.Div(
+                html.P("Looking for conclusions and practical takeaways? Don't miss the Insights & Recommendations at the end."),
+                style={"height": "100px", "fontSize": "21px",
+                       "marginTop": "-10px", "marginBottom": "-50px",
+                       "textIndent": "20px"}),
+        ], style={
+            "backgroundColor": "#0E1117",
+            "padding": "50px",
+            "marginTop": "15px",
+            "borderRadius": "10px",
+            "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
+        })
     ])
 
 
@@ -476,45 +602,53 @@ def empty_figure_message(message="Please select at least one metric to display."
 # Main App Layout
 app.layout = html.Div([
     html.Div([
-        #header section
+        # Header section
         html.Div([
             html.Div([
                 html.H1(
                     "Airplane Crashes Analysis",
                     style={
                         "color": "#FFFFFF", "fontSize": "75px",
-                        "fontWeight": "500","margin": 0,
-                        "fontFamily": "Caveat, cursive", "lineHeight": "1.2"}
-                ),
-                html.H1("Dashboard ✈️",
-                    style={
-                        "color": "#FFFFFF", "fontSize": "70px",
                         "fontWeight": "500", "margin": 0,
-                       "fontFamily": "Caveat, cursive","lineHeight": "1.2",
-                         "alignItems": "center","color": "#FF4B4B" }
+                        "fontFamily": "Caveat, cursive", "lineHeight": "1.2"
+                    }
+                ),
+                html.H1(
+                    "Dashboard ✈️",
+                    style={
+                        "color": "#FF4B4B", "fontSize": "70px",
+                        "fontWeight": "500", "margin": 0,
+                        "fontFamily": "Caveat, cursive", "lineHeight": "1.2",
+                        "alignItems": "center"
+                    }
                 )
-                ], style={"marginRight": "2px"}),
+            ], style={"marginRight": "2px"}),
 
-                # Image section
+            # Image section
             html.Img(
                 src="/assets/—Pngtree—world war ii airplane exploding_21139801.png",
-                style={"height": "370px","marginLeft": "-40px"})
-            ], style={ "display": "flex", "alignItems": "center",
-                      "justifyContent": "center","marginBottom": "-80px",
-                      "paddingTop": "0px"}),
+                style={"height": "370px", "marginLeft": "-40px"}
+            )
+        ], style={
+            "display": "flex", "alignItems": "center",
+            "justifyContent": "center", "marginBottom": "-80px",
+            "paddingTop": "0px"
+        }),
 
-        #Tabs section
+        # Tabs section
         dcc.Tabs(
             id="tabs",
             value='tab1',
             children=[
                 dcc.Tab(label='Home', value='tab1', style=tab_style, selected_style=selected_tab_style),
                 dcc.Tab(label='Exploratory Data Analysis', value='tab2', style=tab_style, selected_style=selected_tab_style),
-                dcc.Tab(label='Recommendations', value='tab3', style=tab_style, selected_style=selected_tab_style),
+                dcc.Tab(label='Insights & Recommendations', value='tab3', style=tab_style, selected_style=selected_tab_style),
             ],
-            style={ "backgroundColor": "transparent", "border": "none",
-                    "borderBottom": "1px solid #333333","marginBottom": "30px"}
-            ),
+            style={
+                "backgroundColor": "transparent", "border": "none",
+                "borderBottom": "1px solid #333333", "marginBottom": "30px"
+            }
+        ),
 
         # Dynamic tab content
         html.Div(id='tabs-content'),
@@ -522,24 +656,29 @@ app.layout = html.Div([
         # Footer section
         html.Footer([
             html.Hr(style={"borderTop": "1px solid #444"}),
-            html.P("Built by Khaoula | View source on ",
-                   style={"color": "#888", "fontSize": "15px", "marginTop": "10px", "display": "inline"}),
-            html.A("GitHub",
-                   href="https://github.com/YOUR_USERNAME/YOUR_REPO",
-                   target="_blank",
-                   style={"color": "#FF4B4B", "fontWeight": "bold", "textDecoration": "none"})
-            ], style={"textAlign": "center", "marginTop": "60px", "paddingBottom": "20px"})
+            html.P(
+                "Built by Khaoula | View source on ",
+                style={"color": "#888", "fontSize": "15px", "marginTop": "10px", "display": "inline"}
+            ),
+            html.A(
+                "GitHub",
+                href="https://github.com/YOUR_USERNAME/YOUR_REPO",
+                target="_blank",
+                style={"color": "#FF4B4B", "fontWeight": "bold", "textDecoration": "none"}
+            )
+        ], style={"textAlign": "center", "marginTop": "60px", "paddingBottom": "20px"})
 
-        ], style={"padding": "0 40px 40px 40px",
-                  "maxWidth": "1200px", "margin": "0 auto"
-      })
-  
-], style={ "backgroundColor": "#11181B","minHeight": "100vh",
-           "margin": "0", "padding": "0"
+    ], style={
+        "padding": "0 40px 40px 40px",
+        "maxWidth": "1200px", "margin": "0 auto"
+    })
+
+], style={
+    "backgroundColor": "#11181B", "minHeight": "100vh",
+    "margin": "0", "padding": "0"
 })
 
 ##############################################################################################################################
-# Callback to update tab content
 @app.callback(
     Output('tabs-content', 'children'),
     Input('tabs', 'value')
@@ -553,7 +692,6 @@ def render_content(tab):
         return recommendations_tab()
     
 ##############################################################################################################################
-# Callback to populate dataset table
 @app.callback(
     Output('data-table-container', 'children'),
     Input('tabs', 'value')
@@ -562,6 +700,7 @@ def update_table(tab_value):
     if tab_value == 'tab1':
         return get_data_table()
     return dash.no_update
+
 ##############################################################################################################################
 @app.callback(
     Output('accident-time-series', 'figure'),
@@ -588,7 +727,8 @@ def crash_over_year(selected_metrics):
             plot_bgcolor="#0E1117",
             paper_bgcolor="#0E1117",
             font_color="white",
-            title_font_size=20,
+            title_font_size=22,  # Increased title font size
+            title_x=0.5,
             xaxis = dict(
                     title="Year",
                     tickfont=dict(color="gray"),
@@ -605,15 +745,20 @@ def crash_over_year(selected_metrics):
             )
 
     return fig
+
 ##############################################################################################################################
 @app.callback(
     Output("monthly-crash-bar-chart", "figure"),
     Input("operator-type-selector", "value")
 )
 def update_bar_chart(selected_types):
-    month_order = ["January", "February", "March", "April", "May", "June",
-               "July", "August", "September", "October", "November", "December"]
-    airplane_data_clean["Month"] = pd.Categorical(airplane_data_clean["Month"], categories=month_order, ordered=True)
+    month_order = [
+        "January", "February", "March", "April", "May", "June",
+        "July", "August", "September", "October", "November", "December"
+    ]
+    airplane_data_clean["Month"] = pd.Categorical(
+        airplane_data_clean["Month"], categories=month_order, ordered=True
+    )
     # Filter the data
     filtered_df = airplane_data_clean[airplane_data_clean["Operator_Type"].isin(selected_types)]
 
@@ -626,8 +771,7 @@ def update_bar_chart(selected_types):
 
     if not selected_types:
         return empty_figure_message("Please select at least one metric to display.")
-    
-  
+
     # Create the bar chart
     fig = px.bar(
         monthly_counts,
@@ -645,28 +789,30 @@ def update_bar_chart(selected_types):
     )
     # Remove white border from bars
     fig.update_traces(marker_line_width=0)
-    
+
     fig.update_layout(
-            plot_bgcolor="#0E1117",
-            paper_bgcolor="#0E1117",
-            font_color="white",
-            title_font_size=20,
-            xaxis = dict(
-                    title="Year",
-                    tickfont=dict(color="white"),
-                    showline=True,
-                    linecolor='gray',  
-                    gridcolor=None),
-            yaxis = dict(
-                    title="Count",
-                    tickfont=dict(color="white"),
-                    showline=True,
-                    linecolor='gray',     
-                    gridcolor='#333',
-                    range=[0, None] )
-            )
-    
-    
+        plot_bgcolor="#0E1117",
+        paper_bgcolor="#0E1117",
+        font_color="white",
+        title_font_size=22,  # Increased title font size
+        title_x=0.45,
+        xaxis=dict(
+            title="Month",
+            tickfont=dict(color="white"),
+            showline=True,
+            linecolor='gray',
+            gridcolor=None
+        ),
+        yaxis=dict(
+            title="Count",
+            tickfont=dict(color="white"),
+            showline=True,
+            linecolor='gray',
+            gridcolor='#333',
+            range=[0, None]
+        )
+    )
+
     return fig
 
 #############################################################################################################################
@@ -675,11 +821,25 @@ def update_bar_chart(selected_types):
     Input("operator-type-selector", "value")
 )
 def update_pie_chart(selected_types):
-    # Categorize Time into periods (e.g., morning, afternoon)
-    airplane_data_clean['Time_Period'] = pd.cut(airplane_data_clean['Time'].str.split(':').str[0].astype(int), 
-                           bins=[0, 6, 12, 18, 24], 
-                           labels=['Night', 'Morning', 'Afternoon', 'Evening'], 
-                           include_lowest=True)
+    # Categorize Time into periods (e.g., night, morning, afternoon, evening)
+    # Handle missing or malformed time values gracefully
+    def get_time_period(time_str):
+        try:
+            hour = int(str(time_str).split(":")[0])
+            if 0 <= hour < 6:
+                return "Night"
+            elif 6 <= hour < 12:
+                return "Morning"
+            elif 12 <= hour < 18:
+                return "Afternoon"
+            elif 18 <= hour < 24:
+                return "Evening"
+        except Exception:
+            return "Unknown"
+        return "Unknown"
+
+    airplane_data_clean['Time_Period'] = airplane_data_clean['Time'].apply(get_time_period)
+
     # Filter data
     filtered_data = airplane_data_clean[
         airplane_data_clean["Operator_Type"].isin(selected_types)
@@ -687,8 +847,7 @@ def update_pie_chart(selected_types):
 
     if not selected_types:
         return empty_figure_message("Please select at least one metric to display.")
-    
- 
+
     # Create Pie chart
     fig = px.pie(
         filtered_data,
@@ -701,9 +860,16 @@ def update_pie_chart(selected_types):
         plot_bgcolor="#0E1117",
         paper_bgcolor="#0E1117",
         font_color="white",
-        title_font_size=20
+        title_font_size=22,  # Increased title font size
+        title_x=0.45
     )
-    
+    fig.update_traces(
+        rotation=70,
+        hole=0.3,
+        marker=dict(line=dict(width=0)),
+        domain=dict(x=[1,1], y=[1,1]) 
+    )
+
     return fig
 ##############################################################################################################################
 @app.callback(
@@ -727,10 +893,12 @@ def display_accidents_per_date(selected_date):
         html.P(f"Accidents on {target_date.date()}:", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "20px"}),
         html.Ul([
             html.Li([
-                html.Span(f"{row['Date'].date()} - {row['Country']} - {row['Operator_Type']} - {row['Type']} - Fatalities: {row['Fatalities']}",
-                          style={"color": "#FAFAFA"})
+                html.Span(
+                    f"{row['Date'].date()} - {row['Country']} - {row['Operator_Type']} - {row['Type']} - Fatalities: {row['Fatalities']}",
+                    style={"color": "#FAFAFA"}
+                )
             ]) for _, row in filtered_df.iterrows()
-        ])
+        ], style={"marginLeft": "20px"})
     ])
 
 ##############################################################################################################################
@@ -754,10 +922,13 @@ def update_world_map(tab_value):
 
     fig.update_layout(
         width=1100,
-        height=600,  # Changed height from 700 to 500
+        height=600,
         geo=dict(bgcolor="#0E1117", projection_type="natural earth"),
         paper_bgcolor="#0E1117",
-        font_color="white"
+        font_color="white",
+        font=dict(size=20),  # Increased font size
+        title_font_size=22,  # Increased title font size
+        title_x=0.45         # Center the title
     )
     fig.update_geos(
         showcoastlines=True,
@@ -796,6 +967,7 @@ def search_by_country(country_name):
         html.P(f"✈️ Total Accidents: {num_accidents}", style={"color": "#FAFAFA", "fontSize": "18px"}),
         html.P(f"💀 Total Fatalities: {total_fatalities}", style={"color": "#FAFAFA", "fontSize": "18px"}),
     ])
+
 ############################################################################################################################
 @app.callback(
     Output("top-countries-bar-chart", "figure"),
@@ -815,14 +987,16 @@ def update_top_countries_bar_chart(dummy_input):
         x="Country",
         y="Crash_Count",
         title="Top 10 Countries by Number of Airplane Crashes",
-        color_discrete_sequence=["#800020"]
+        color_discrete_sequence=["#800020"],
+        template="plotly_dark" 
     )
     
     fig.update_layout(
         plot_bgcolor="#0E1117",
         paper_bgcolor="#0E1117",
         font_color="white",
-        title_font_size=20,
+        title_font_size=22,  # Increased title font size
+        title_x=0.45,
         xaxis=dict(
             tickfont=dict(color="white"),
             showline=True,
@@ -841,6 +1015,82 @@ def update_top_countries_bar_chart(dummy_input):
     
     return fig
 
+##############################################################################################################################
+@app.callback(
+    Output("cause-pie-chart", "figure"),
+    Input("tabs", "value")
+)
+def update_cause_pie_chart(_):
+    # Get cause counts
+    cause_counts = airplane_data_clean['Causes'].value_counts().reset_index()
+    cause_counts.columns = ['Cause', 'Count']
+    
+    # Calculate percentages
+    total = cause_counts['Count'].sum()
+    cause_counts['Percentage'] = (cause_counts['Count'] / total * 100).round(1)
+    # Create pie chart
+    fig = px.pie(
+        cause_counts,
+        values='Count',
+        names='Cause',
+        title='Distribution of Crash Causes',
+        color_discrete_sequence=px.colors.sequential.RdBu
+    )
+    fig.update_traces(
+        textinfo='percent+label',
+        texttemplate='<span style="font-size:14px">%{label}</span><br><span style="font-size:12px">%{percent}</span>',
+        
+        rotation=70,
+        hole=0.25,
+        direction="clockwise",
+        sort=False,
+        hovertemplate='<b>%{label}</b><br>' +
+                      'Percentage: %{percent}<br>' +
+                      '<extra></extra>',
+        
+        marker=dict(line=dict(width=0)),
+        domain=dict(x=[1,1], y=[1,1]) 
+    )
+    fig.update_layout(
+        height=700,
+        width=1100,
+        margin=dict(t=80, b=10, l=200, r=200),
+        paper_bgcolor='#0E1117',
+        plot_bgcolor='#0E1117',
+        font_color="white",
+        title_font_color="white",
+        title_font_size=22,  # Increased title font size
+        title_x=0.45,
+        showlegend=True,
+        legend=dict(
+            font_color="white",
+            bgcolor="rgba(0,0,0,0)",
+            orientation="h",
+            yanchor="bottom",
+            y=0.8,
+            xanchor="right",
+            x=0
+        )
+    )
+    return fig
+
+############################################################################################################################"
+@app.callback(
+    Output("cause-stats", "children"),
+    Input("cause-dropdown", "value")
+)
+def update_cause_stats(selected_cause):
+    filtered = airplane_data_clean[airplane_data_clean['Causes'] == selected_cause]
+    crash_count = len(filtered)
+    fatality_sum = filtered['Fatalities'].sum()
+
+    return html.Div([
+        html.P(f"🛩️ Number of Crashes: {crash_count}", style={"marginBottom": "10px"}),
+        html.P(f"☠️ Total Fatalities: {fatality_sum}", style={"marginBottom": "10px"}),
+        html.P(f"📊 Fatality Rate: {fatality_sum / crash_count:.2f} per crash" if crash_count > 0 else "No fatality data.")
+    ])
+
 #############################################################################################################################
+
 if __name__ == '__main__':
     app.run_server(debug=True)
