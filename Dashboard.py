@@ -255,7 +255,7 @@ def eda_tab():
         html.P([
             "Airplane crashes have long captured public attention due to their tragic consequences and complex causes. This dashboard takes you on an "
             "interactive journey to explore aviation accidents through three essential questions:", html.Strong(" When "), "did they occur? ", html.Strong("Where "), " did they happen? And ", html.Strong("Why?"),
-            " did they take place? By answering these, we uncover patterns that can lead to deeper insights—and better safety in the skies.",
+            " By answering these, we uncover patterns that can lead to deeper insights—and better safety in the skies.",
         ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px"}),
 
         html.P([
@@ -558,13 +558,34 @@ def eda_tab():
 def recommendations_tab():
     return html.Div([
 
+        html.P([
+            "After exploring the temporal, geographical, and causal dimensions of airplane crashes, we now highlight the most "
+            "important findings and propose data-driven recommendations for future improvements.",
+        ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px"}),
 
+        html.H3('📊 Key Insights:',style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}), 
 
+        html.Ul([   
+            html.Li("Airplane crashes have steadily declined over the decades, with the highest number of incidents occurring during the 1970s and 1980s. This long-term drop reflects significant improvements in aviation safety, technology, and regulation."),            
+            html.Li("The United States reports the highest number of crashes, likely due to its high air traffic volume rather than poor safety performance."),
+            html.Li("Pilot error, mechanical failure, and weather conditions are the most frequently reported causes of accidents."),        
+            html.Li("Crashes are more frequent during the summer and fall, suggesting possible seasonal operational challenges."),   
+            html.Li("Most crashes occur during the day, especially in the early morning hours, indicating that visibility isn't always a determining safety factor."),
+        ],style={"color": "#FAFAFA", "fontSize": "20px", "marginLeft": "20px", "lineHeight": "1.6"}),
 
-
-
+        html.H3('🎯 Recommendations:',style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}), 
+        html.Ul([
+            html.Li("Continue investing in pilot training programs, focusing on decision-making and emergency response to reduce pilot error incidents."),
+            html.Li("Enhance aircraft maintenance protocols and invest in predictive maintenance technologies to minimize mechanical failures."),
+            html.Li("Implement advanced weather forecasting and monitoring systems to improve flight planning and safety during adverse weather conditions."),
+            html.Li("Increase safety measures and operational protocols during peak crash seasons (summer and fall) to mitigate risks associated with seasonal challenges."),
+            html.Li("Promote the use of flight data monitoring systems to analyze flight operations and identify potential safety issues before they lead to    accidents."),
+            html.Li("Raise awareness among passengers about the importance of following in-flight safety instructions and crew guidance, especially during takeoff, landing, and emergencies, to improve survivability and reduce panic during incidents.")
+        ],style={"color": "#FAFAFA", "fontSize": "20px","marginLeft": "20px", "lineHeight": "1.6"}),
+        ])
+        
     
-         ])
+         
 def get_data_table():
     return dash_table.DataTable(
         data=airplane_data.head(10).to_dict('records'),
