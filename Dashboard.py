@@ -183,23 +183,58 @@ def home_tab():
         ], style={"marginLeft": "20px", "lineHeight": "1.6"}),
 
         html.H3("📦 Dataset Overview:", style=title_style),
-
         html.Div([
-            html.P([
-                html.Strong("Total Records: ", style={"color": "#FAFAFA", "fontSize": "20px"}),
-                html.Span(f"{len(airplane_data):,}", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "20px"})
-            ], style={"marginBottom": "10px"}),
+            # Total Records Box
+            html.Div([
+                html.Div("Total Records", style={"color": "#FAFAFA", "fontSize": "24px", "marginBottom": "10px"}),
+                html.Div(f"{len(airplane_data):,}", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "24px"})
+            ], style={
+                "width": "20%",
+                "display": "inline-block",
+                "textAlign": "center",
+                "backgroundColor": "#0E1117",
+                "borderRadius": "12px",
+                "padding": "18px 13px",
+                "margin": "0 1.5%",
+                "boxShadow": "0 4px 8px rgba(0,0,0,0.2)"
+            }),
 
-            html.P([
-                html.Strong("Columns: ", style={"color": "#FAFAFA", "fontSize": "20px"}),
-                html.Span(f"{len(airplane_data.columns)}", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "20px"})
-            ], style={"marginBottom": "10px"}),
+            # Columns Box
+            html.Div([
+                html.Div("Columns", style={"color": "#FAFAFA", "fontSize": "24px", "marginBottom": "10px"}),
+                html.Div(f"{len(airplane_data.columns)}", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "24px"})
+            ], style={
+                "width": "20%",
+                "display": "inline-block",
+                "textAlign": "center",
+                "backgroundColor": "#0E1117",
+                "borderRadius": "12px",
+                "padding": "18px 13px",
+                "margin": "0 6%",
+                "boxShadow": "0 4px 8px rgba(0,0,0,0.2)"
+            }),
 
-            html.P([
-                html.Strong("Date Range: ", style={"color": "#FAFAFA", "fontSize": "20px"}),
-                html.Span("1908 - 2009", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "20px"})
-            ], style={"marginBottom": "20px"})
-        ]),
+            # Date Range Box
+            html.Div([
+                html.Div("Date Range", style={"color": "#FAFAFA", "fontSize": "24px", "marginBottom": "10px"}),
+                html.Div("1908 - 2009", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "24px"})
+            ], style={
+                "width": "20%",
+                "display": "inline-block",
+                "textAlign": "center",
+                "backgroundColor": "#0E1117",
+                "borderRadius": "12px",
+                "padding": "18px 13px",
+                "margin": "0 1.5%",
+                "boxShadow": "0 4px 8px rgba(0,0,0,0.2)"
+            })
+        ], style={
+            "marginTop": "20px",
+            "marginBottom": "40px",
+            "display": "flex",
+            "justifyContent": "center",
+            "alignItems": "center"
+        }),
 
         html.H4(
             "Sample Data (First 10 Records):",
@@ -224,33 +259,33 @@ def home_tab():
                 ),
 
                 html.Ul([
-                    html.Li([html.Strong("Date: "), html.Span("The date when the airplane crash occurred.")]),
-                    html.Li([html.Strong("Time: "), html.Span("The time of day the crash happened (if available).")]),
-                    html.Li([html.Strong("Location: "), html.Span("The geographic location where the crash occurred.")]),
-                    html.Li([html.Strong("Operator: "), html.Span("The airline or company operating the aircraft.")]),
-                    html.Li([html.Strong("Flight #: "), html.Span("The flight number assigned to the aircraft.")]),
-                    html.Li([html.Strong("Route: "), html.Span("The intended or actual flight route.")]),
-                    html.Li([html.Strong("Type: "), html.Span("The aircraft model involved in the crash.")]),
-                    html.Li([html.Strong("Registration: "), html.Span("The aircraft's registration ID.")]),
-                    html.Li([html.Strong("cn/In: "), html.Span("Construction or serial number.")]),
-                    html.Li([html.Strong("Aboard: "), html.Span("Total number of people aboard.")]),
-                    html.Li([html.Strong("Fatalities: "), html.Span("Number of people who died.")]),
-                    html.Li([html.Strong("Ground: "), html.Span("Number of ground fatalities or injuries.")]),
-                    html.Li([html.Strong("Summary: "), html.Span("Brief description of the incident.")])
-                ], style={"color": "#FAFAFA", "lineHeight": "1.8", "fontSize": "20px", "marginBottom": "60px"}),
+                    html.Li([html.Strong("Date: ", style={"color": "#FF4B4B"}), html.Span("The date when the airplane crash occurred.")]),
+                    html.Li([html.Strong("Time: ", style={"color": "#FF4B4B"}), html.Span("The time of day the crash happened (if available).")]),
+                    html.Li([html.Strong("Location: ", style={"color": "#FF4B4B"}), html.Span("The geographic location where the crash occurred.")]),
+                    html.Li([html.Strong("Operator: ", style={"color": "#FF4B4B"}), html.Span("The airline or company operating the aircraft.")]),
+                    html.Li([html.Strong("Flight #: ", style={"color": "#FF4B4B"}), html.Span("The flight number assigned to the aircraft.")]),
+                    html.Li([html.Strong("Route: ", style={"color": "#FF4B4B"}), html.Span("The intended or actual flight route.")]),
+                    html.Li([html.Strong("Type: ", style={"color": "#FF4B4B"}), html.Span("The aircraft model involved in the crash.")]),
+                    html.Li([html.Strong("Registration: ", style={"color": "#FF4B4B"}), html.Span("The aircraft's registration ID.")]),
+                    html.Li([html.Strong("cn/In: ", style={"color": "#FF4B4B"}), html.Span("Construction or serial number.")]),
+                    html.Li([html.Strong("Aboard: ", style={"color": "#FF4B4B"}), html.Span("Total number of people aboard.")]),
+                    html.Li([html.Strong("Fatalities: ", style={"color": "#FF4B4B"}), html.Span("Number of people who died.")]),
+                    html.Li([html.Strong("Ground: ", style={"color": "#FF4B4B"}), html.Span("Number of ground fatalities or injuries.")]),
+                    html.Li([html.Strong("Summary: ", style={"color": "#FF4B4B"}), html.Span("Brief description of the incident.")])
+                ], style={"color": "#FAFAFA", "lineHeight": "1.8", "fontSize": "20px", "marginBottom": "60px","marginRight":'-20px'}),
 
                 html.H3("📄 Project Info:", style=title_style),
 
                 html.P([
-                    html.Strong("Author: "),
+                    html.Strong("Author: ", ),
                     html.Span("Khaoula - Data Scientist", style={"color": "#FAFAFA"})
-                ], style={"color": "#FAFAFA", "fontSize": "20px", "marginBottom": "10px"}),
+                ], style={"color": "#FAFAFA", "fontSize": "20px", "marginBottom": "10px","marginRight":'-10px'}),
 
                 html.P([
-                    html.Strong("GitHub Repository: "),
+                    html.Strong("GitHub Repository: ", ),
                     html.A(
                         "View Full Code on GitHub",
-                        href="https://github.com/YourUsername/your-repo-name",
+                        href="https://github.com/KhElgoumiri/airplane_analysis",
                         target="_blank",
                         style={"color": "#FF4B4B", "textDecoration": "underline"}
                     )
@@ -263,7 +298,7 @@ def home_tab():
                 "width": "60%",
                 "display": "inline-block",
                 "verticalAlign": "middle",
-                "paddingRight": "10px",
+                "paddingRight": "-50px",
                 "marginBottom": "-70px",
             }),
 
@@ -272,10 +307,11 @@ def home_tab():
                 html.Img(
                     src="/assets/—Pngtree—damaged warplane mid-flight trailing smoke_21098862.png",
                     style={
-                        "height": "540px",
-                        "width": "540px",
+                        "height": "500px",
+                        "width": "500px",
                         "objectFit": "contain",
-                        "marginBottom": "-50px"
+                        "marginBottom": "10px",
+                        "paddingLeft":"-90px"
                     }
                 )
             ], style={
@@ -284,7 +320,7 @@ def home_tab():
                 "verticalAlign": "center",
                 "paddingLeft": "10px"
             })
-        ], style={"marginTop": "0px", "display": "flex", "alignItems": "center", "gap": "0px"})
+        ], style={"marginTop": "0px", "display": "flex",  "gap": "0px"})
     ]),
 
 
@@ -303,33 +339,33 @@ def eda_tab():
 
         html.Div([
             html.Div([
-                html.P("📅 Date Range:", style={"color": "#888", "fontSize": "18px"}),
-                html.P("1908 - 2009", style={"color": "#FF4B4B", "fontSize": "22px", "fontWeight": "bold"})
+                html.P("📅 Date Range:", style={"color": "#888", "fontSize": "20px","color": "#ECECEC"}),
+                html.P("1908 - 2009", style={"color": "#FF4B4B", "fontSize": "25px", "fontWeight": "bold"})
             ], style={"width": "20%", "display": "inline-block", "textAlign": "center"}),
 
             html.Div([
-                html.P("✈️ Total Crashes:", style={"color": "#888", "fontSize": "18px"}),
-                html.P(f"{len(airplane_data_clean):,}", style={"color": "#FF4B4B", "fontSize": "22px", "fontWeight": "bold"})
+                html.P("✈️ Total Crashes:", style={"color": "#888", "fontSize": "20px","color": "#ECECEC"}),
+                html.P(f"{len(airplane_data_clean):,}", style={"color": "#FF4B4B", "fontSize": "24px", "fontWeight": "bold"})
             ], style={"width": "20%", "display": "inline-block", "textAlign": "center"}),
 
             html.Div([
-                html.P("💀 Total Fatalities:", style={"color": "#888", "fontSize": "18px"}),
-                html.P(f"{int(airplane_data_clean['Fatalities'].sum()):,}", style={"color": "#FF4B4B", "fontSize": "22px", "fontWeight": "bold"})
+                html.P("💀 Total Fatalities:", style={"color": "#888", "fontSize": "20px","color": "#ECECEC"}),
+                html.P(f"{int(airplane_data_clean['Fatalities'].sum()):,}", style={"color": "#FF4B4B", "fontSize": "25px", "fontWeight": "bold"})
             ], style={"width": "20%", "display": "inline-block", "textAlign": "center"}),
 
             html.Div([
-                html.P("📈 Avg Fatality Rate:", style={"color": "#888", "fontSize": "18px"}),
-                html.P(f"{airplane_data_clean['Fatality_Rate'].mean():.2%}", style={"color": "#FF4B4B", "fontSize": "22px", "fontWeight": "bold"})
+                html.P("📈 Avg Fatality Rate:", style={"color": "#888", "fontSize": "20px","color": "#ECECEC"}),
+                html.P(f"{airplane_data_clean['Fatality_Rate'].mean():.2%}", style={"color": "#FF4B4B", "fontSize": "25px", "fontWeight": "bold"})
             ], style={"width": "20%", "display": "inline-block", "textAlign": "center"}),
 
             html.Div([
-                html.P("🧭 Common Operator Type:", style={"color": "#888", "fontSize": "18px"}),
-                html.P(f"{airplane_data_clean['Operator_Type'].mode()[0]}", style={"color": "#FF4B4B", "fontSize": "22px", "fontWeight": "bold"})
+                html.P("🧭 Common Operator Type:", style={"color": "#888", "fontSize": "20px","color": "#ECECEC"}),
+                html.P(f"{airplane_data_clean['Operator_Type'].mode()[0]}", style={"color": "#FF4B4B", "fontSize": "25px", "fontWeight": "bold"})
             ], style={"width": "20%", "display": "inline-block", "textAlign": "center"}),
         ], style={
             "marginTop": "20px",
             "marginBottom": "40px",
-            "backgroundColor": "#111111",
+            "backgroundColor": "#0E1117",
             "borderRadius": "12px",
             "padding": "25px 0",
             "boxShadow": "0 4px 8px rgba(0,0,0,0.2)"
@@ -627,7 +663,7 @@ def recommendations_tab():
             " the risk of future incidents. The insights gained from this analysis can help stakeholders in the aviation industry, including airlines, regulatory bodies, and safety organizations, make informed decisions that prioritize passenger safety and improve "
             "overall aviation standards."
         ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px", "marginTop": "20px"}),
-        html.P([html.Strong("As a final point:"), "While aviation today is safer than ever, analyzing its past failures is what ensures a safer future. Data tells the story—if we listen carefully."
+        html.P([html.Strong("As a final point: "), "While aviation today is safer than ever, analyzing its past failures is what ensures a safer future. Data tells the story—if we listen carefully."
             ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px", "marginTop": "20px"}),
         html.P([
             "Thank you for exploring the Airplane Crashes Analysis Dashboard! We hope this interactive experience has provided valuable insights into aviation safety and sparked your curiosity about the history of airplane accidents."
@@ -643,7 +679,7 @@ def get_data_table():
             'border': '1px solid #444'
         },
         style_cell={
-            'backgroundColor': '#1E1E1E',
+            'backgroundColor': "#0E1117",
             'color': 'white',
             'fontSize': '13px',
             'textAlign': 'left',
@@ -741,7 +777,7 @@ app.layout = html.Div([
             ),
             html.A(
                 "GitHub",
-                href="https://github.com/YOUR_USERNAME/YOUR_REPO",
+                href="https://github.com/KhElgoumiri/airplane_analysis",
                 target="_blank",
                 style={"color": "#FF4B4B", "fontWeight": "bold", "textDecoration": "none","fontSize": "17px"}
             )
