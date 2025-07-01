@@ -58,7 +58,7 @@ tab_style = {
     "border": "none",
     "borderBottom": "2px solid transparent",
     "color": "#FAFAFA",
-    "fontSize": "17px",
+    "fontSize": "19px",
     "fontWeight": "500",
     "padding": "12px 20px",
     "outline": "none"
@@ -80,7 +80,7 @@ selected_tab_style = {
     "border": "none",
     "borderBottom": "2px solid #FF4B4B",
     "color": "#FF4B4B",
-    "fontSize": "25px",
+    "fontSize": "28px",
     "fontWeight": "600",
     "padding": "12px 20px",
     "outline": "none"
@@ -206,7 +206,7 @@ def home_tab():
 
                 html.P([
                     html.Strong("Author: "),
-                    html.Span("Khaoula – Data Scientist", style={"color": "#FAFAFA"})
+                    html.Span("Khaoula - Data Scientist", style={"color": "#FAFAFA"})
                 ], style={"color": "#FAFAFA", "fontSize": "20px", "marginBottom": "10px"}),
 
                 html.P([
@@ -343,12 +343,12 @@ def eda_tab():
             ]),
 
             html.Div([
-                html.H5(
-                    "Search Accidents by Date:",
+                html.H3(
+                    "🔍Search Accidents by Date:",
                     style={
                         "color": "#FFFFFF",
-                        "fontSize": "26px",
-                        "fontWeight": "600",
+                        "fontSize": "24px",
+                        "fontWeight": "400",
                         "marginTop": "40px"
                     }
                 ),
@@ -375,6 +375,7 @@ def eda_tab():
             "borderRadius": "10px",
             "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
         }),
+       html.Div([],style={"height": "50px"}),
 
         html.Div([
             html.Div(
@@ -411,12 +412,12 @@ def eda_tab():
             html.Div([
                 html.Div([
                     html.Div([
-                        html.H5(
-                            "Search Accidents by Country:",
+                        html.H3(
+                            "🔍 Search Accidents by Country:",
                             style={
                                 "color": "#FFFFFF",
-                                "fontSize": "26px",
-                                "fontWeight": "600",
+                                "fontSize": "24px",
+                                "fontWeight": "400",
                                 "marginTop": "40px"
                             }
                         ),
@@ -456,6 +457,7 @@ def eda_tab():
             "borderRadius": "10px",
             "boxShadow": "0 4px 8px rgba(0, 0, 0, 0.2)"
         }),
+        html.Div([],style={"height": "10px"}),
         html.Div([
             html.Div(
                 html.P("Though the United States tops the list in crash count, this could be a reflection of its flight volume—or something more. What's really driving these numbers?"),
@@ -505,7 +507,8 @@ def eda_tab():
                     style={
                         "color": "#FFFFFF",
                         "fontSize": "24px",
-                        "marginBottom": "20px"
+                        "marginBottom": "20px",
+                        "fontWeight": "400"
                     }
                 ),
                 dcc.Dropdown(
@@ -539,7 +542,7 @@ def eda_tab():
             html.Div(
                 html.P("Looking for conclusions and practical takeaways? Don't miss the Insights & Recommendations at the end."),
                 style={"height": "100px", "fontSize": "21px",
-                       "marginTop": "-10px", "marginBottom": "-50px",
+                       "marginTop": "50px", "marginBottom": "-10px",
                        "textIndent": "20px"}),
         ], style={
             "backgroundColor": "#0E1117",
@@ -554,6 +557,13 @@ def eda_tab():
 # Define the Recommendations tab content
 def recommendations_tab():
     return html.Div([
+
+
+
+
+
+
+    
          ])
 def get_data_table():
     return dash_table.DataTable(
@@ -658,13 +668,13 @@ app.layout = html.Div([
             html.Hr(style={"borderTop": "1px solid #444"}),
             html.P(
                 "Built by Khaoula | View source on ",
-                style={"color": "#888", "fontSize": "15px", "marginTop": "10px", "display": "inline"}
+                style={"color": "#888", "fontSize": "17px", "marginTop": "10px", "display": "inline"}
             ),
             html.A(
                 "GitHub",
                 href="https://github.com/YOUR_USERNAME/YOUR_REPO",
                 target="_blank",
-                style={"color": "#FF4B4B", "fontWeight": "bold", "textDecoration": "none"}
+                style={"color": "#FF4B4B", "fontWeight": "bold", "textDecoration": "none","fontSize": "17px"}
             )
         ], style={"textAlign": "center", "marginTop": "60px", "paddingBottom": "20px"})
 
@@ -860,9 +870,20 @@ def update_pie_chart(selected_types):
         plot_bgcolor="#0E1117",
         paper_bgcolor="#0E1117",
         font_color="white",
-        title_font_size=22,  # Increased title font size
-        title_x=0.45
+        title_font_size=22,
+        title_x=0.45,
+            legend=dict(
+            font_color="white",
+            font=dict(size=16),  
+            bgcolor="rgba(0,0,0,0)",
+            orientation="v",
+            yanchor="bottom",
+            y=0.7,
+            xanchor="right",
+            x=0
+        )
     )
+      
     fig.update_traces(
         rotation=70,
         hole=0.3,
@@ -887,15 +908,15 @@ def display_accidents_per_date(selected_date):
     filtered_df = df[df['Date'] == target_date]
 
     if filtered_df.empty:
-        return html.P(f"No accidents found for {target_date.date()}.", style={"color": "white"})
+        return html.P(f"No accidents found for {target_date.date()}.", style={"color": "white","fontSize": "20px"})
     
     return html.Div([
-        html.P(f"Accidents on {target_date.date()}:", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "20px"}),
+        html.P(f"Accidents on {target_date.date()}:", style={"color": "#FF4B4B", "fontWeight": "bold", "fontSize": "21px"}),
         html.Ul([
             html.Li([
                 html.Span(
                     f"{row['Date'].date()} - {row['Country']} - {row['Operator_Type']} - {row['Type']} - Fatalities: {row['Fatalities']}",
-                    style={"color": "#FAFAFA"}
+                    style={"color": "#FAFAFA", "fontSize": "20px", "marginBottom": "5px"}
                 )
             ]) for _, row in filtered_df.iterrows()
         ], style={"marginLeft": "20px"})
@@ -949,7 +970,7 @@ def update_world_map(tab_value):
 )
 def search_by_country(country_name):
     if not country_name:
-        return html.Div("Please enter a country name.", style={"color": "#FAFAFA"})
+        return html.Div("Please enter a country name.", style={"color": "#FAFAFA", "fontSize": "19px"})
 
     # Normalize input for comparison
     country = country_name.strip().lower()
@@ -1038,8 +1059,7 @@ def update_cause_pie_chart(_):
     )
     fig.update_traces(
         textinfo='percent+label',
-        texttemplate='<span style="font-size:14px">%{label}</span><br><span style="font-size:12px">%{percent}</span>',
-        
+        texttemplate='<span style="font-size:16px">%{label}</span><br><span style="font-size:13px">%{percent}</span>',
         rotation=70,
         hole=0.25,
         direction="clockwise",
@@ -1047,7 +1067,6 @@ def update_cause_pie_chart(_):
         hovertemplate='<b>%{label}</b><br>' +
                       'Percentage: %{percent}<br>' +
                       '<extra></extra>',
-        
         marker=dict(line=dict(width=0)),
         domain=dict(x=[1,1], y=[1,1]) 
     )
@@ -1060,14 +1079,15 @@ def update_cause_pie_chart(_):
         font_color="white",
         title_font_color="white",
         title_font_size=22,  # Increased title font size
-        title_x=0.45,
+        title_x=0.5,
         showlegend=True,
         legend=dict(
             font_color="white",
+            font=dict(size=17),  # Updated legend font size
             bgcolor="rgba(0,0,0,0)",
-            orientation="h",
+            orientation="v",
             yanchor="bottom",
-            y=0.8,
+            y=0.3,
             xanchor="right",
             x=0
         )
@@ -1085,8 +1105,8 @@ def update_cause_stats(selected_cause):
     fatality_sum = filtered['Fatalities'].sum()
 
     return html.Div([
-        html.P(f"🛩️ Number of Crashes: {crash_count}", style={"marginBottom": "10px"}),
-        html.P(f"☠️ Total Fatalities: {fatality_sum}", style={"marginBottom": "10px"}),
+        html.P(f"🛩️ Number of Crashes: {crash_count}", style={"marginBottom": "10px","fontSize": "20px"}),
+        html.P(f"☠️ Total Fatalities: {fatality_sum}", style={"marginBottom": "10px","fontSize": "20px"}),
         html.P(f"📊 Fatality Rate: {fatality_sum / crash_count:.2f} per crash" if crash_count > 0 else "No fatality data.")
     ])
 
