@@ -98,55 +98,91 @@ title_style = {
 # Define the Home tab content
 def home_tab():
     return html.Div([
-        html.H2(["Welcome to the Airplane Crashes Analysis Dashboard – ",
-            html.Strong("an interactive exploration of aviation accident data.",
-                style={ "borderBottom": "2px solid #FF4B4B","display": "inline-block",
-                        "paddingBottom": "2px","color": "#FFFFFF","fontWeight": "200",
-                        "fontFamily": "Inter", "fontSize": "22px"}
-                )],style={ 
-                    "color": "#FFFFFF","fontSize": "28px",
-                    "fontWeight": "300","marginBottom": "20px",
-                    "textAlign": "left", "fontFamily": "Source Sans Pro"}
-               ),
+        html.H2([
+            "Welcome to the Airplane Crashes Analysis Dashboard – ",
+            html.Strong(
+                "an interactive exploration of aviation accident data.",
+                style={
+                    "borderBottom": "2px solid #FF4B4B",
+                    "display": "inline-block",
+                    "paddingBottom": "2px",
+                    "color": "#FFFFFF",
+                    "fontWeight": "200",
+                    "fontFamily": "Inter",
+                    "fontSize": "22px"
+                }
+            )
+        ], style={
+            "color": "#FFFFFF",
+            "fontSize": "28px",
+            "fontWeight": "300",
+            "marginBottom": "20px",
+            "textAlign": "left",
+            "fontFamily": "Source Sans Pro"
+        }),
 
-        html.P("In this Dashboard, we analyze global airplane crashes spanning the years 1908 to 2009.",
-               style={ "color": "#FAFAFA","fontSize": "20px",
-                       "marginBottom": "30px", "lineHeight": "1.6",
-                       "fontFamily": "Source Sans Pro"  }
-               ),
+        html.P(
+            [
+                "Since the early 20th century, humans have been seeking new forms of transportation to save time. This goal became a reality thanks to Orville and Wilbur Wright, ",
+                "who made the first successful flight in the history of self-propelled, heavier-than-air aircraft on December 17, 1903. Orville piloted the gasoline-powered, ",
+                "propeller-driven biplane, which stayed aloft for 12 seconds and covered 120 feet during its inaugural flight. ",
+                "It was a short trip—but it opened the door to a new era of transportation. Today, there are more than 100,000 flights per day worldwide (based on international statistics from 2019). ",
+                "Although air travel is now considered one of the safest modes of transportation, its early days were marked by many tragic accidents. Let's take a closer look at this history!"
+            ],
+            style={
+                "color": "#FAFAFA",
+                "fontSize": "20px",
+                "fontFamily": "Source Sans Pro",
+                "marginBottom": "30px",
+                "lineHeight": "1.6",
+                "textIndent": "20px"
+            }
+        ),
 
-        html.H3("🧭 How to Navigate:",style=title_style),
+        html.H3("🧭 How to Navigate:", style=title_style),
 
         html.Ol([
             html.Li([
-                html.Span("Use the navigation tabs above to explore different sections of the dashboard:",
-                        style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}),
+                html.Span(
+                    "Use the navigation tabs above to explore different sections of the dashboard:",
+                    style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}
+                ),
                 html.Ul([
                     html.Li([
-                        html.Strong("Exploratory Data Analysis (EDA): ",
-                                    style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}),
-                        html.Span("Visualize key statistics, trends, and patterns in the dataset.",
-                                  style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"})
-                            ], style={"marginBottom": "8px"}),
+                        html.Strong(
+                            "Exploratory Data Analysis (EDA): ",
+                            style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}
+                        ),
+                        html.Span(
+                            "Visualize key statistics, trends, and patterns in the dataset.",
+                            style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}
+                        )
+                    ], style={"marginBottom": "8px"}),
                     html.Li([
-                        html.Strong("Insights & Recommendations: ",
-                                    style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}),
-                        html.Span("Discover actionable insights and data-driven suggestions based on the analysis.",
-                                  style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"})
-                            ], style={"marginBottom": "8px"})
-                        ], style={"marginLeft": "20px", "marginTop": "10px", "marginBottom": "15px"})
-                ], style={"marginBottom": "15px", "color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}),
+                        html.Strong(
+                            "Insights & Recommendations: ",
+                            style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}
+                        ),
+                        html.Span(
+                            "Discover actionable insights and data-driven suggestions based on the analysis.",
+                            style={"color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}
+                        )
+                    ], style={"marginBottom": "8px"})
+                ], style={"marginLeft": "20px", "marginTop": "10px", "marginBottom": "15px"})
+            ], style={"marginBottom": "15px", "color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}),
 
-            html.Li("Engage with interactive charts to uncover deeper insights into aviation incidents.",
-                    style={"marginBottom": "15px", "color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}),
+            html.Li(
+                "Engage with interactive charts to uncover deeper insights into aviation incidents.",
+                style={"marginBottom": "15px", "color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}
+            ),
 
-            html.Li("Review the summaries and findings to better understand the key takeaways from the data.",
-                    style={"marginBottom": "15px", "color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"})
+            html.Li(
+                "Review the summaries and findings to better understand the key takeaways from the data.",
+                style={"marginBottom": "15px", "color": "#FAFAFA", "fontSize": "20px", "fontFamily": "Source Sans Pro"}
+            )
         ], style={"marginLeft": "20px", "lineHeight": "1.6"}),
 
-
-
-        html.H3("📦 Dataset Overview:",style=title_style),
+        html.H3("📦 Dataset Overview:", style=title_style),
 
         html.Div([
             html.P([
@@ -165,7 +201,8 @@ def home_tab():
             ], style={"marginBottom": "20px"})
         ]),
 
-        html.H4("Sample Data (First 10 Records):",
+        html.H4(
+            "Sample Data (First 10 Records):",
             style={
                 "color": "#FFFFFF",
                 "fontSize": "20px",
@@ -177,32 +214,32 @@ def home_tab():
 
         html.Div(id='data-table-container'),
 
-      
         html.Div([
-            
             html.Div([
-                   html.H3("📘 Dataset Dictionary:",style=title_style),
+                html.H3("📘 Dataset Dictionary:", style=title_style),
 
-        html.P("The dataset contains the following columns:",
-               style={"color": "#FAFAFA", "fontSize": "20px", "marginBottom": "20px"}),
+                html.P(
+                    "The dataset contains the following columns:",
+                    style={"color": "#FAFAFA", "fontSize": "20px", "marginBottom": "20px"}
+                ),
 
-        html.Ul([
-            html.Li([html.Strong("Date: "), html.Span("The date when the airplane crash occurred.")]),
-            html.Li([html.Strong("Time: "), html.Span("The time of day the crash happened (if available).")]),
-            html.Li([html.Strong("Location: "), html.Span("The geographic location where the crash occurred.")]),
-            html.Li([html.Strong("Operator: "), html.Span("The airline or company operating the aircraft.")]),
-            html.Li([html.Strong("Flight #: "), html.Span("The flight number assigned to the aircraft.")]),
-            html.Li([html.Strong("Route: "), html.Span("The intended or actual flight route.")]),
-            html.Li([html.Strong("Type: "), html.Span("The aircraft model involved in the crash.")]),
-            html.Li([html.Strong("Registration: "), html.Span("The aircraft's registration ID.")]),
-            html.Li([html.Strong("cn/In: "), html.Span("Construction or serial number.")]),
-            html.Li([html.Strong("Aboard: "), html.Span("Total number of people aboard.")]),
-            html.Li([html.Strong("Fatalities: "), html.Span("Number of people who died.")]),
-            html.Li([html.Strong("Ground: "), html.Span("Number of ground fatalities or injuries.")]),
-            html.Li([html.Strong("Summary: "), html.Span("Brief description of the incident.")])
-        ], style={"color": "#FAFAFA", "lineHeight": "1.8", "fontSize": "20px", "marginBottom": "60px"}),
+                html.Ul([
+                    html.Li([html.Strong("Date: "), html.Span("The date when the airplane crash occurred.")]),
+                    html.Li([html.Strong("Time: "), html.Span("The time of day the crash happened (if available).")]),
+                    html.Li([html.Strong("Location: "), html.Span("The geographic location where the crash occurred.")]),
+                    html.Li([html.Strong("Operator: "), html.Span("The airline or company operating the aircraft.")]),
+                    html.Li([html.Strong("Flight #: "), html.Span("The flight number assigned to the aircraft.")]),
+                    html.Li([html.Strong("Route: "), html.Span("The intended or actual flight route.")]),
+                    html.Li([html.Strong("Type: "), html.Span("The aircraft model involved in the crash.")]),
+                    html.Li([html.Strong("Registration: "), html.Span("The aircraft's registration ID.")]),
+                    html.Li([html.Strong("cn/In: "), html.Span("Construction or serial number.")]),
+                    html.Li([html.Strong("Aboard: "), html.Span("Total number of people aboard.")]),
+                    html.Li([html.Strong("Fatalities: "), html.Span("Number of people who died.")]),
+                    html.Li([html.Strong("Ground: "), html.Span("Number of ground fatalities or injuries.")]),
+                    html.Li([html.Strong("Summary: "), html.Span("Brief description of the incident.")])
+                ], style={"color": "#FAFAFA", "lineHeight": "1.8", "fontSize": "20px", "marginBottom": "60px"}),
 
-                html.H3("📄 Project Info:",style=title_style),
+                html.H3("📄 Project Info:", style=title_style),
 
                 html.P([
                     html.Strong("Author: "),
@@ -211,23 +248,25 @@ def home_tab():
 
                 html.P([
                     html.Strong("GitHub Repository: "),
-                    html.A("View Full Code on GitHub",
-                           href="https://github.com/YourUsername/your-repo-name",
-                           target="_blank",
-                           style={"color": "#FF4B4B", "textDecoration": "underline"})
+                    html.A(
+                        "View Full Code on GitHub",
+                        href="https://github.com/YourUsername/your-repo-name",
+                        target="_blank",
+                        style={"color": "#FF4B4B", "textDecoration": "underline"}
+                    )
                 ], style={"color": "#FAFAFA", "fontSize": "20px"}),
-                
+
                 html.P([
                     html.Span("Feel free to explore, fork, or contribute to the project.", style={"color": "#FAFAFA"})
                 ], style={"fontSize": "20px", "marginTop": "10px"})
-              ], style={
-               "width": "60%",
+            ], style={
+                "width": "60%",
                 "display": "inline-block",
                 "verticalAlign": "middle",
                 "paddingRight": "10px",
                 "marginBottom": "-70px",
             }),
-            
+
             # Image on the right
             html.Div([
                 html.Img(
@@ -246,7 +285,7 @@ def home_tab():
                 "paddingLeft": "10px"
             })
         ], style={"marginTop": "0px", "display": "flex", "alignItems": "center", "gap": "0px"})
-    ])
+    ]),
 
 
 # Define the EDA tab content
@@ -563,7 +602,7 @@ def recommendations_tab():
             "important findings and propose data-driven recommendations for future improvements.",
         ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px"}),
 
-        html.H3('📊 Key Insights:',style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}), 
+        html.H3('📊 Key Insights:', style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}), 
 
         html.Ul([   
             html.Li("Airplane crashes have steadily declined over the decades, with the highest number of incidents occurring during the 1970s and 1980s. This long-term drop reflects significant improvements in aviation safety, technology, and regulation."),            
@@ -571,20 +610,29 @@ def recommendations_tab():
             html.Li("Pilot error, mechanical failure, and weather conditions are the most frequently reported causes of accidents."),        
             html.Li("Crashes are more frequent during the summer and fall, suggesting possible seasonal operational challenges."),   
             html.Li("Most crashes occur during the day, especially in the early morning hours, indicating that visibility isn't always a determining safety factor."),
-        ],style={"color": "#FAFAFA", "fontSize": "20px", "marginLeft": "20px", "lineHeight": "1.6"}),
+        ], style={"color": "#FAFAFA", "fontSize": "20px", "marginLeft": "20px", "lineHeight": "1.6"}),
 
-        html.H3('🎯 Recommendations:',style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}), 
+        html.H3('🎯 Recommendations:', style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}), 
         html.Ul([
             html.Li("Continue investing in pilot training programs, focusing on decision-making and emergency response to reduce pilot error incidents."),
             html.Li("Enhance aircraft maintenance protocols and invest in predictive maintenance technologies to minimize mechanical failures."),
             html.Li("Implement advanced weather forecasting and monitoring systems to improve flight planning and safety during adverse weather conditions."),
             html.Li("Increase safety measures and operational protocols during peak crash seasons (summer and fall) to mitigate risks associated with seasonal challenges."),
-            html.Li("Promote the use of flight data monitoring systems to analyze flight operations and identify potential safety issues before they lead to    accidents."),
+            html.Li("Promote the use of flight data monitoring systems to analyze flight operations and identify potential safety issues before they lead to accidents."),
             html.Li("Raise awareness among passengers about the importance of following in-flight safety instructions and crew guidance, especially during takeoff, landing, and emergencies, to improve survivability and reduce panic during incidents.")
-        ],style={"color": "#FAFAFA", "fontSize": "20px","marginLeft": "20px", "lineHeight": "1.6"}),
-        ])
-        
-    
+        ], style={"color": "#FAFAFA", "fontSize": "20px", "marginLeft": "20px", "lineHeight": "1.6"}),
+        html.H3("📚 Conclusion:", style={"color": "#FFFFFF", "fontSize": "26px", "fontWeight": "600", "marginTop": "20px"}),
+        html.P([
+            "This dashboard provides a comprehensive overview of airplane crashes, revealing trends and patterns that can inform future safety measures. By understanding when, where, and why crashes occur, we can take proactive steps to enhance aviation safety and reduce"
+            " the risk of future incidents. The insights gained from this analysis can help stakeholders in the aviation industry, including airlines, regulatory bodies, and safety organizations, make informed decisions that prioritize passenger safety and improve "
+            "overall aviation standards."
+        ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px", "marginTop": "20px"}),
+        html.P([html.Strong("As a final point:"), "While aviation today is safer than ever, analyzing its past failures is what ensures a safer future. Data tells the story—if we listen carefully."
+            ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px", "marginTop": "20px"}),
+        html.P([
+            "Thank you for exploring the Airplane Crashes Analysis Dashboard! We hope this interactive experience has provided valuable insights into aviation safety and sparked your curiosity about the history of airplane accidents."
+        ], style={"color": "#FAFAFA", "fontSize": "20px", "textIndent": "20px", "marginTop": "20px"}),
+    ])  
          
 def get_data_table():
     return dash_table.DataTable(
