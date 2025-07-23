@@ -4,6 +4,7 @@ import plotly.express as px
 import pandas as pd
 import plotly.graph_objects as go
 import numpy as np
+import os
 ##############################################################################################################################
 # Load the data for the dashboard
 airplane_data = pd.read_csv("Data/Airplane_Crashes_and_Fatalities_Since_1908.csv")
@@ -278,14 +279,14 @@ def home_tab():
 
                 html.P([
                     html.Strong("Author: ", ),
-                    html.Span("Khaoula - Data Scientist", style={"color": "#FAFAFA"})
+                    html.Span("Khaoula E.  Data Scientist", style={"color": "#FAFAFA"})
                 ], style={"color": "#FAFAFA", "fontSize": "20px", "marginBottom": "10px","marginRight":'-10px'}),
 
                 html.P([
                     html.Strong("GitHub Repository: ", ),
                     html.A(
                         "View Full Code on GitHub",
-                        href="https://github.com/KhElgoumiri/airplane_analysis",
+                        href="https://github.com/ulaelg/airplane_analysis",
                         target="_blank",
                         style={"color": "#FF4B4B", "textDecoration": "underline"}
                     )
@@ -1217,5 +1218,8 @@ def update_cause_stats(selected_cause):
 
 #############################################################################################################################
 
+    
+
 if __name__ == '__main__':
-    app.run_server(debug=True)
+    port = int(os.environ.get("PORT", 10000))
+    app.run_server(host='0.0.0.0', port=port, debug=False)
