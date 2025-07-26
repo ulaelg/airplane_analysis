@@ -10,7 +10,9 @@ CrashPlane Dashboard is an interactive web application built using the Dash fram
 It provides visual insights into aviation accidents over time, across regions, and by various attributes like operator, aircraft type, and phase of flight.
 
 The dashboard helps users explore trends, identify high-risk areas, and understand the context of aviation safety.
-<img width="397" height="653" alt="Screenshot from 2025-07-26 12-16-57" src="https://github.com/user-attachments/assets/94613440-ac2f-408b-8bae-f9d373d67af7" />
+
+
+<img width="381" height="650" alt="Screenshot from 2025-07-26 12-16-57" src="https://github.com/user-attachments/assets/393151e8-49a9-4977-ad0c-4d1a93a91915" />
 <img width="380" height="653" alt="Screenshot from 2025-06-30 22-07-14" src="https://github.com/user-attachments/assets/8f2c82d3-3922-4b09-8473-46fbb35af234" />
 <img width="369" height="653" alt="Screenshot from 2025-06-30 22-07-18" src="https://github.com/user-attachments/assets/4b80fccb-0229-4822-bc2b-e2994c88e48b" />
 <img width="378" height="656" alt="Screenshot from 2025-06-30 22-07-21" src="https://github.com/user-attachments/assets/7ad43d74-2c9b-483a-b0fc-85f615752e8c" />
